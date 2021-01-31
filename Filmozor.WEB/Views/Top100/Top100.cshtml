@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Топ 100";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Топ 100</title>
+</head>
+<body>
+        <div id="top">
+            <hr />
+            100 ЛУЧШИХ ФИЛЬМОВ ВСЕХ ВРЕМЕН
+            <hr />
+        </div>
+
+        @*<div id="content">*@
+            <div id="list">
+                <ol>
+                    @{
+                        var count = 0;
+                        foreach (var film in ViewBag.Films)
+                        {
+                            if (count == ViewBag.Count || count == 100) { break; }
+                            <li style="margin-bottom:20px;">
+                                <span><a href="/Film/Film/@film.FilmID"><img src='@film.avatar' height="200" alt="poster" /></a></span>
+                                <p>
+                                    @Html.ActionLink((string)film.rusName, "Film", "Film", new { id = film.FilmID }, null)
+                                </p>
+                                @for (int i = 1; i <= 10; i++)
+                                {
+                                    if (i <= film.rating)
+                                    {
+                                        <img src="/Images/stars3.png" id="rating-@i" title="@i" />
+                                    }
+                                    else
+                                    {
+                                        <img src="/Images/stars2.png" id="rating-@i" title="@i" />
+                                    }
+                                }
+                                @film.rating
+                                <hr>
+                            </li>
+                            count++;
+                        }
+                    }
+                </ol>
+            </div>
+        @*</div>*@
+</body>
+</html>

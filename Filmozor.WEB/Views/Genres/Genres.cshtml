@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Genres";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/film_style.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Жанры</title>
+</head>
+<body>
+
+    @{
+        <div id="menu-genres">
+            <div id="menu-header"><h1>Жанры</h1></div>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <div style="display:inline-block;"><a href="#@genre">@genre</a></div>
+            }
+
+        </div>
+        <hr>
+        int end = 0;
+        for (int i = 0; i < @ViewBag.Count; i++)
+        {
+            <div class="content-title_1" style="display:inline-block;"><a name="@ViewBag.genres[i]">@ViewBag.genres[i]</a></div>
+            //@ViewBag.genres[i];
+            <br>
+            <div class="new_films_1">
+                @for (int j = end; j < end + @ViewBag.Counts[i]; j++)
+                {
+                    <span class="film-item" style="display: inline-block;">
+                        <span><a href="/Film/Film/@ViewBag.Films[j].FilmID"><img src='@ViewBag.Films[j].avatar' height="200" alt="poster" /></a></span>
+                        <div class="item-info">
+                            @Html.ActionLink((string)@ViewBag.Films[j].rusName, "Film", "Film", new { id = @ViewBag.Films[j].FilmID }, null)
+                        </div>
+                    </span>
+                }
+            </div>
+            <br>
+            <hr>
+            end += @ViewBag.Counts[i];
+        }
+    }
+</body>
+</html>

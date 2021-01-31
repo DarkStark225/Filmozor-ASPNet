@@ -1,0 +1,122 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+
+    <meta charset="utf-8" name="keywords" content="кино,обзор,рейтинг 250 лучших фильмов">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/SiteSearchPanel.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+
+$(function() {
+
+$(window).scroll(function() {
+
+if($(this).scrollTop() != 0) {
+
+$('#toTop').fadeIn();
+
+} else {
+
+$('#toTop').fadeOut();
+
+}
+
+});
+
+$('#toTop').click(function() {
+
+$('body,html').animate({scrollTop:0},800);
+
+});
+
+});
+
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <div id="mainheader">FILMOZOR</div>
+    </div>
+    <div id="menu">
+        <ul >
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Войти", "Login", "Account")</li>
+                <li>@Html.ActionLink("Регистрация", "Register", "Account")</li>
+            }
+            else
+            {
+                <li>
+                    <a>@User.Identity.Name</a>
+                </li>
+                <li>@Html.ActionLink("Выход", "Logout", "Account")</li>
+            }
+
+        </ul>
+        <ul>
+            <li>@Html.ActionLink("Жанры", "Genres", "Genres")</li>
+            <li>@Html.ActionLink("Новинки", "Novelties", "Novelties")</li>
+            <li>@Html.ActionLink("Топ-100", "Top100", "Top100")</li>
+            <li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("Страница админа", "MyPage", "MyPage")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Мои оценки", "MyFilms", "MyPage")
+                    }
+                }
+            </li>
+        </ul>
+        <div class="hsearch"></div>
+        <div class="box">
+            <div class="container">
+                @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                {
+                    <span class="icon"><button style="background-image:url(../../Images/search_mini.png); border:0; width:30px; height:30px;"></button></span>
+                    <input type="search" id="search" name="searchstring" placeholder="Поиск..." />
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <div id="content">@RenderBody()</div>
+
+
+
+    <div class="footer">
+        <div class="footer-list">
+            <ul>
+                <li>@Html.ActionLink("Новинки", "Novelties", "Novelties", null, new { @class = "action" })</li>
+                <li class="slash">/</li>
+                <li>@Html.ActionLink("Топ-100", "Top100", "Top100", null, new { @class = "action" })</li>
+                <li class="slash">/</li>
+                <li>@Html.ActionLink("Жанры", "Genres", "Genres", null, new { @class = "action" })</li>
+                <li class="slash">/</li>
+                <li>@Html.ActionLink("На главную", "Index", "Home", null, new { @class = "action" })</li>
+            </ul>
+        </div>
+        <p> ©FILMOZOR Березин Антон(верстальщик), Варварина Анастасия(арт-дизайнер), Бобрышев Леонид(back-end). <br />2016-@DateTime.Now.Year</p>
+    </div>
+    <DIV ID="toTop"> ^ Наверх </DIV>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

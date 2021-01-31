@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "FilmForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Добавление фильма</title>
+<h2>Добавление фильма</h2>
+
+@using (Html.BeginForm("AddFilm", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr><td>Название(на русском) </td><td><input required type="text" name="rusName" /></td></tr>
+        <tr><td>Название (на английском) </td><td><input required type="text" name="engName" /></td></tr>
+        <tr><td>Постер </td><td><input type="file" name="ava" /></td></tr>
+        <tr><td>Описание </td><td><input required type="text" name="description" /></td></tr>
+        <tr><td>Жанр </td><td><input required type="text" name="genre" /></td></tr>
+        <tr><td>Год выхода </td><td><input required type="text" name="year" /></td></tr>
+        <tr><td>Режиссер </td><td><input required type="text" name="director" /></td></tr>
+        <tr><td>Продолжительность </td><td><input required type="number" name="duration" /></td></tr>
+        <tr><td>Ссылка на трейлер </td><td><input required type="text" name="trailer" /></td></tr>
+        <tr><td>Количество голосов </td><td><input required type="number" name="number_of_voices" /></td></tr>
+        <tr><td>Рейтинг </td><td><input required type="text" name="rating" /></td></tr>
+        <tr><td>Дата премьеры </td><td><input required type="datetime-local" name="date_of_premier" /></td></tr>
+        <tr><td>Кадр 1 </td><td><input type="file" name="shots1" /></td></tr>
+        <tr><td>Кадр 2 </td><td><input type="file" name="shots2" /></td></tr>
+        <tr><td>Кадр 3 </td><td><input type="file" name="shots3" /></td></tr>
+        <tr><td><input type="submit" value="Загрузить" /></td><td></td></tr>
+    </table>
+}

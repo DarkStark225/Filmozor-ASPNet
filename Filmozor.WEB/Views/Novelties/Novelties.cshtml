@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Novelties";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Novelties.css" />*@
+    <meta name="viewport" content="width=device-width" />
+    <title>Новинки</title>
+    <style>
+        .film-item a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            display: inline-block;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="basic">
+        <div id="menu">
+            <div id="menu-header">Новинки</div>
+            <div id="menu-list">
+                @{
+                    var year = DateTime.Now.Year;
+                    for (int j = 0; j < 2; j++)
+                    {
+                        <ul>
+                            @for (int jj = 0; jj < 4; jj++)
+                            {
+                                <li><a href="#@year"> @year </a></li>
+                                year--;
+                            }
+                        </ul>
+                    }
+                }
+            </div>
+        </div>
+        @*<div id="content">*@
+            @{
+                year = DateTime.Now.Year;
+                int i, s = 0, e = 5;
+                <hr>
+                for (int j = 0; j < 8; j++)
+                {
+                    <div class="content-title_1"><a name="@year">@year</a></div>
+                    <div class="new_films_1">
+                        @{
+                            for (i = s; i < e; i++)
+                            {
+                                <div class="film-item">
+                                    <span><a href="/Film/Film/@ViewBag.Films[i].FilmID"><img src='@ViewBag.Films[i].avatar' height="200" alt="poster" /></a></span>
+                                    <p>
+                                        @Html.ActionLink((string)@ViewBag.Films[i].rusName, "Film", "Film", new { id = @ViewBag.Films[i].FilmID }, null)
+                                    </p>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <hr>
+                    year--;
+                    if (e < 40) { s += 5; e += 5; }
+                }
+         
+            }
+
+
+        @*</div>*@
+
+    </div>
+</body>
+</html>

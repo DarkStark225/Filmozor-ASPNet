@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Поиск фильмов</title>
+</head>
+<body>
+    <div>
+        @*<div id="content">*@
+            <div id="list">
+                <ol>
+                    @{
+                        foreach (var film in @ViewBag.Films)
+                        {
+                            <li>
+                                <span><a href="/Film/Film/@film.FilmID"><img src='@film.avatar' height="320" alt="poster" /></a></span>
+                                <p>
+                                    @Html.ActionLink((string)film.rusName, "Film", "Film", new { id = film.FilmID }, null)
+                                </p>
+                            </li>
+                        }
+                    }
+                </ol>
+            </div>
+        </div>
+    @*</div>*@
+</body>
+</html>

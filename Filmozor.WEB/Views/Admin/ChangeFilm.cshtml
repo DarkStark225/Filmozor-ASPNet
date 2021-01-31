@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "FilmForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/admin-style.css">
+</head>
+<title>Изменение фильма</title>
+<h2>Изменение фильма</h2>
+
+@using (Html.BeginForm("ChangeFilmL", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input hidden="hidden" name="id" value="@ViewBag.id" />
+    <table>
+        <tr><td>Название(на русском) </td><td><input required type="text" name="rusName" value="@ViewBag.Film.rusName" /></td></tr>
+        <tr><td>Название (на английском) </td><td><input required type="text" name="engName" value="@ViewBag.Film.engName" /></td></tr>
+        <tr><td>Постер </td><td><input type="file" name="ava" /></td></tr>
+        <tr><td>Описание </td><td><input required type="text" name="description" value="@ViewBag.Film.description" /></td></tr>
+        <tr><td>Жанр </td><td><input required type="text" name="genre" value="@ViewBag.Film.genre" /></td></tr>
+        <tr><td>Год выхода </td><td><input required type="text" name="year" value="@ViewBag.Film.year" /></td></tr>
+        <tr><td>Режиссер </td><td><input required type="text" name="director" value="@ViewBag.Film.director" /></td></tr>
+        <tr><td>Продолжительность </td><td><input required type="number" name="duration" value="@ViewBag.Film.duration" /></td></tr>
+        <tr><td>Ссылка на трейлер </td><td><input required type="text" name="trailer" value="@ViewBag.Film.trailer" /></td></tr>
+        <tr><td>Дата премьеры </td><td><input required type="datetime-local" name="date_of_premier" value="@ViewBag.Film.date_of_premier" /></td></tr>
+        <tr><td>Кадр 1 </td><td><input type="file" name="shots1" /></td></tr>
+        <tr><td>Кадр 2 </td><td><input type="file" name="shots2" /></td></tr>
+        <tr><td>Кадр 3 </td><td><input type="file" name="shots3" /></td></tr>
+        <tr><td></td><td><input type="submit" value="Изменить" /></td></tr>
+    </table>
+}

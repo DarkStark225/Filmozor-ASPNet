@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "MyPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Админская страница</title>
+
+
+@Html.ActionLink("Мои оценки", "MyFilms", "MyPage")
+<br>
+@Html.ActionLink("Редактирование фильмов", "FilmTable", "Admin")
+<br>
+@Html.ActionLink("Редактирование новостей", "NewsTable", "Admin")
+

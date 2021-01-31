@@ -1,0 +1,81 @@
+@font-face {
+    
+font-family: 'Nautilus Pompilius';
+    
+src: local('~/fonts/Nautilus Pompilius'), 
+local('~/fonts/NautilusPompilius'), 
+url('~/fonts/nautiluspompilius.woff2') format('woff2'), 
+url('~/fonts/nautiluspompilius.woff') format('woff'), 
+url('~/fonts/nautiluspompilius.ttf') format('truetype');
+   
+font-weight: 400;
+    
+font-style: normal;
+
+}
+
+@font-face {
+	    font-family: a_machinaortoshtregular;
+	    src: local("a_machinaortoshtregular"),
+         url(fonts/a_machinaortoshtregular.ttf);
+  }
+
+#film
+{   
+    width:100%;    
+    margin-bottom:100px;
+}
+#main_poster{
+	margin:20px;
+	padding:0;
+	float:left;
+	box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+
+}
+
+#description{
+	text-align:left;
+	font-size:30px;
+	font-family: Nautilus Pompilius;
+
+}
+#description p {font-size:20px;}
+#trailer{box-shadow: 0 0 5px 3px;
+         width:1011px;
+         align-content:center;
+}
+#featured{margin:0 auto;
+box-shadow: 0 0 5px 3px;}
+}
+.slash
+{
+	font-size: 20px;
+	color: red;
+	padding: 0 20px;
+
+}
+.block-title{display: inline-block;
+font-family:a_machinaortoshtregular;
+font-size:50px;
+margin:20px;
+text-align:center;}
+#featured {
+ width: 940px;
+  height: 450px; 
+  background: #009cff url('orbit/loading.gif') no-repeat center center;
+   overflow: hidden; 
+}
+
+#menu-genres{ 
+width: 100%; 
+list-style-type: none; 
+border: 2px solid #4169E0; 
+background-color: #F0FFFF; 
+border-radius: 30px; 
+margin: 0 auto; 
+color:red; 
+font-family: Helvetica; 
+font-size:30px; 
+box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; 
+
+}

@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/orbit.css">
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.orbit.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/film_style.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.film.rusName</title>
+    <script type="text/javascript"> 
+        var $jq = jQuery.noConflict(); 
+        $jq(window).load(function() { 
+        $jq('#featured').orbit({ 
+        'bullets': true, 
+        'timer' : true, 
+        'animation' : 'horizontal-slide' 
+        }); 
+        }); 
+    </script>
+</head>
+<body>
+    <div>
+        @{
+            <div id="film">
+                <div id="main_poster">
+                    <img src="@ViewBag.film.avatar" height="400" alt="poster" />
+                    <br>
+                    <div id="description">
+                        @{if (ViewBag.myrating > 0) {
+                            @: <p>Ваша оценка:</p>
+                          }
+                            else {
+                                @: <p>Оценка зрителей:</p>
+                          }
+                        }
+                        @for (int i = 1; i <= 10; i++)
+                        {
+                                if (ViewBag.myrating > 0)
+                                {
+                                    if (i <= ViewBag.myrating)
+                                    {
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+                                        <a href='/Film/Rating?rat=@i&filmid=@ViewBag.film.FilmID'>
+                                            <img src="~/Images/stars1.png" id="rating-@i" title="@i" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/stars1.png" id="rating-@i" title="@i" />
+                                    }
+                                }
+                                else
+                                {
+                                    <a href='/Film/Rating?rat=@i&filmid=@ViewBag.film.FilmID'>
+                                        <img src="~/Images/stars2.png" id="rating-@i" title="@i" />
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                if (i <= (int)Math.Round(ViewBag.film.rating))
+                                {
+                                    if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a href='/Film/Rating?rat=@i&filmid=@ViewBag.film.FilmID'>
+                                            <img src="~/Images/stars3.png" id="rating-@i" title="@i" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/stars3.png" id="rating-@i" title="@i" />
+                                    }
+                                }
+                                else
+                                {
+                                    if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a href='/Film/Rating?rat=@i&filmid=@ViewBag.film.FilmID'>
+                                            <img src="~/Images/stars2.png" id="rating-@i" title="@i" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Images/stars2.png" id="rating-@i" title="@i" />
+                                    }
+                                }
+                            }
+
+                        }
+                    </div>
+     
+                </div>
+                <div id="description">
+                    @ViewBag.film.rusName <br>
+                    @ViewBag.film.engName  <br>
+                    Год: @ViewBag.film.year <br>
+                    Режиссёр: @ViewBag.film.director <br>
+                    <p>Описание: @ViewBag.film.description<br></p>
+                    <p>Продолжительность: @ViewBag.film.duration минут //  Премьера:	@ViewBag.film.date_of_premier.ToString("D")</p>
+                </div>
+            </div>
+            
+                <div class="block-title">Трейлер:</div>
+                <div id="trailer"><iframe width="1011" height="480" src="@ViewBag.film.trailer" frameborder="0" allowfullscreen></iframe></div>
+            
+        }
+    </div>
+    <div class="block-title">Кадры из фильма:</div>
+    <div id="featured">
+        <img src="@ViewBag.film.shots1" width="1010" />
+        <img src="@ViewBag.film.shots2" width="1010" />
+        <img src="@ViewBag.film.shots3" width="1010" />
+    </div>
+    </div>
+</body>
+</html>

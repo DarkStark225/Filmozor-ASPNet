@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "NewForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Добавление новости</title>
+<h2>Добавление новости</h2>
+
+@using (Html.BeginForm("AddNew", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr><td>Заголовок </td><td><input required type="text" name="title" /></td></tr>
+        <tr><td>Текст новости </td><td><input required type="text" name="description" /></td></tr>
+        <tr><td>Аватар </td><td><input required type="file" name="avatar" /></td></tr>
+        <tr><td><input type="submit" value="Загрузить" /></td><td></td></tr>
+    </table>
+}
+

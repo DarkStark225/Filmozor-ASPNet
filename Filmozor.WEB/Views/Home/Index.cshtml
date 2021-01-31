@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ФильмоЗор</title>
+</head>
+<body>
+    <div class="content-title_1">Новые фильмы</div>
+        <div class="new_films_1">
+            @*@{
+                var count = 10;
+                foreach (var film in ViewBag.Films)
+                {
+                    if (count > 0)
+                    {
+                        <span class="film-item">
+                            <a href="/Film/Film/@film.FilmID"><img src='@film.avatar' height="220" alt="poster" /></a>
+                            <div class="item-info">@Html.ActionLink((string)film.rusName, "Film", "Film", new { id = film.FilmID }, null)</div>
+                        </span>
+                            count--;
+                        }
+                        else { break; }
+                    }
+            }*@
+        </div>
+
+        <hr />
+        <div class="content-title_2">Новости кино</div>
+        <div class="for_news_body">
+            @*@{
+                foreach (var _new in ViewBag.News)
+                {
+                    <hr />
+                    @*<div class="item">
+                        <div class="pic"><a href="/news/2758181/"><img src="@_new.avatar" alt="@_new.title"></a></div>
+                        <div class="date">@_new.date_of_publication.ToString("D")</div>
+                        <div class="title">@_new.title</div>
+                        <div class="descr">@_new.description</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div id="line"><hr /></div>
+                }
+            }*@
+        </div>
+        <div id="posters">
+            <div class="poster">
+                <span class="film-item1">
+                    <div class="item-head">СКОРО В КИНО</div>
+                    <a href="/Film/Film/@ViewBag.Coming.FilmID"><img src='@ViewBag.Coming.avatar' height="320" alt="poster" /></a>
+                    <div class="item-info">
+                        @Html.ActionLink((string)ViewBag.Coming.rusName, "Film", "Film", new { id = ViewBag.Coming.FilmID }, null)
+                    </div>
+                </span>
+            </div>
+            @*<div class="poster">
+                <span class="film-item1">
+                    <div class="item-head">УЖЕ В КИНО</div>
+                    <a href="/Film/Film/@ViewBag.Now.FilmID"><img src='@ViewBag.Now.avatar' height="320" alt="poster" /></a>
+                    <div class="item-info">
+                        @Html.ActionLink((string)ViewBag.Now.rusName, "Film", "Film", new { id = ViewBag.Now.FilmID }, null)
+                    </div>
+                </span>
+            </div>*@
+        </div>
+</body>
+</html>

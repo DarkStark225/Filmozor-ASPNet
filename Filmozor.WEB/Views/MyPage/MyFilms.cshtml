@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "MyFilms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Мои оценки</title>
+<h2>Мои оценки</h2>
+
+@*<div id="content">*@
+    <div id="list">
+        <ol>
+            @{
+                int j = 0;
+                foreach (var film in ViewBag.Films)
+                {
+                    <li>
+                        <span><a href="/Film/Film/@film.FilmID"><img src='@film.avatar' height="200" alt="poster" /></a></span>
+                        <p>
+                            @Html.ActionLink((string)film.rusName, "Film", "Film", new { id = film.FilmID }, null)
+                        </p>
+                        @for (int i = 1; i <= 10; i++)
+                        {
+                        if (i <= ViewBag.Ratings[j])
+                        {
+                                <img src="/Images/stars1.png" id="rating-@i" title="@i" />
+                            }
+                        else
+                        {
+                                <img src ="/Images/stars2.png" id = "rating-@i" title = "@i"/>
+                            }
+                    }
+
+                    </li>
+                    j++;
+                }
+            }
+        </ol>
+    </div>
+@*</div>*@

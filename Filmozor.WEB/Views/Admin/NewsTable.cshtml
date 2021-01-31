@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "FilmTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/admin-style.css">
+</head>
+<title>Таблица новостей</title>
+<h2>Таблица новостей</h2>
+
+<div id="button">@Html.ActionLink("Добавить новость", "NewForm", "Admin")</div>
+
+<table style="max-width:1080px !important;">
+    <tr>
+        <td>Заголовок</td>
+        <td>Текст новости</td>
+        <td>Дата публикации</td>
+        <td></td>
+    </tr>
+    @foreach (var _new in ViewBag.News)
+    {
+        <tr>
+            <td>@_new.title</td>
+            <td>@_new.description</td>
+            <td>@_new.date_of_publication.ToString("D")</td>
+            <td>
+                @Html.ActionLink("Изменить", "ChangeNew", "Admin", new { id = _new.NewID }, null)
+                <br>
+                @Html.ActionLink("Удалить", "DeleteNew", "Admin", new { id = _new.NewID }, null)
+            </td>
+        </tr>
+    }
+</table>

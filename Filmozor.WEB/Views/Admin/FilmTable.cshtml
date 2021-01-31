@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "FilmTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Таблица фильмов</title>
+<head>
+    <link rel="stylesheet" href="~/Content/admin-style.css">
+</head>
+<h2>Таблица фильмов</h2>
+
+<div id="button">@Html.ActionLink("Добавить фильм", "FilmForm", "Admin")</div>
+
+<table style="max-width:1080px !important;">
+    <tr>
+        <td>Название<br>(на русском)</td>
+        <td>Название <br>(ориг.)</td>
+        <td>Жанр</td>
+        <td>Год выхода</td>
+        <td>Режиссер</td>
+        <td></td>
+    </tr>
+    @foreach (var film in ViewBag.Films)
+    {
+        <tr>
+            <td>@film.rusName</td>
+            <td>@film.engName</td>
+            <td>@film.genre</td>
+            <td>@film.year</td>
+            <td>@film.director</td>
+            <td>
+                @Html.ActionLink("Изменить", "ChangeFilm", "Admin", new { id = film.FilmID }, null)
+                <br>
+                @Html.ActionLink("Удалить", "DeleteFilm", "Admin", new { id = film.FilmID }, null)
+            </td>
+        </tr>
+    }
+</table>

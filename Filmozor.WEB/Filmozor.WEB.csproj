@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4ACA242B-6F75-4354-9498-E68BB637B30E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Filmozor</RootNamespace>
+    <AssemblyName>Filmozor</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyPageController.cs" />
+    <Compile Include="Controllers\NoveltiesController.cs" />
+    <Compile Include="Controllers\Top100Controller.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\admin-style.css" />
+    <Content Include="Content\background.jpg" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\film_style.css" />
+    <Content Include="Content\footer.png" />
+    <Content Include="Content\Novelties.css" />
+    <Content Include="Content\orbit.css" />
+    <Content Include="Content\SiteSearchPanel.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\001.jpg" />
+    <Content Include="Images\002.jpg" />
+    <Content Include="Images\1-23.jpg" />
+    <Content Include="Images\102383.jpg" />
+    <Content Include="Images\12312gjhvbrjhyuyy.jpg" />
+    <Content Include="Images\1279442087_b_41892.jpg" />
+    <Content Include="Images\1365342741_2.jpg" />
+    <Content Include="Images\1iGth8F.jpg" />
+    <Content Include="Images\1_1_neprikasaemye_01.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\2224211.jpg" />
+    <Content Include="Images\2622.jpg" />
+    <Content Include="Images\27134854.1.jpg" />
+    <Content Include="Images\2829002.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\392412.jpg" />
+    <Content Include="Images\3b34d021f95a7a2b0487adbc2e4f2141.jpg" />
+    <Content Include="Images\42664.jpg" />
+    <Content Include="Images\447301.jpg" />
+    <Content Include="Images\51781.jpg" />
+    <Content Include="Images\51824.jpg" />
+    <Content Include="Images\535341.jpg" />
+    <Content Include="Images\567419_original.jpg" />
+    <Content Include="Images\575180.jpg" />
+    <Content Include="Images\589290.jpg" />
+    <Content Include="Images\641780.jpg" />
+    <Content Include="Images\740cffb884c60878ef7d7b114581ac69.jpg" />
+    <Content Include="Images\931677.jpg" />
+    <Content Include="Images\950a0d4687a0.png" />
+    <Content Include="Images\Blade-Runner-2049-images-EW-2nd-Page-Opener-featured.jpg" />
+    <Content Include="Images\blade-runner-fanart.jpg" />
+    <Content Include="Images\c173fc7e9424d4a835072fde3bfc3774.png" />
+    <Content Include="Images\cd1153ca75db40fc4869d84301e0ce95.jpg" />
+    <Content Include="Images\ce0483463176ble27m28h.jpg" />
+    <Content Include="Images\cher.jpg" />
+    <Content Include="Images\chudo-zhenshchina-diana-amazonka-wonder-woman-diana-dc-com-3.jpg" />
+    <Content Include="Images\d0TeE6MG3B11UxES61XXWZjCSKs.jpg" />
+    <Content Include="Images\dunkirk-christopher-nolan-trailer-images-26.png" />
+    <Content Include="Images\Dunkirk1.jpg" />
+    <Content Include="Images\f01c2d9eb864ed6f11bfce12a6e9fb75.jpg" />
+    <Content Include="Images\Films\A Beautiful Mind\30966941.jpeg" />
+    <Content Include="Images\Films\A Beautiful Mind\4103_original.jpg" />
+    <Content Include="Images\Films\A Beautiful Mind\4104_original.jpg" />
+    <Content Include="Images\Films\A Beautiful Mind\530.jpg" />
+    <Content Include="Images\Films\About Time\662596.jpg" />
+    <Content Include="Images\Films\About Time\about-time-domnhall-gleeson.jpg" />
+    <Content Include="Images\Films\About Time\about-time-rachel-mcadams-domnhall-gleeson-2.jpg" />
+    <Content Include="Images\Films\About Time\domnhall-gleeson-rachel-mcadams-about-time.jpg" />
+    <Content Include="Images\Films\American History X\382.jpg" />
+    <Content Include="Images\Films\American History X\american_history_x_03.jpg" />
+    <Content Include="Images\Films\American History X\american_history_x_05.jpg" />
+    <Content Include="Images\Films\American History X\american_history_x_09.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 2\1227-001.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 2\1227-002.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 2\1227-003.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 2\5502.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 3\1213.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 3\1228-003.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 3\1228-004.jpg" />
+    <Content Include="Images\Films\Back to the Future Part 3\7103.jpg" />
+    <Content Include="Images\Films\Back to the Future\12-n2.jpeg" />
+    <Content Include="Images\Films\Back to the Future\476.jpg" />
+    <Content Include="Images\Films\Back to the Future\images2.jpg" />
+    <Content Include="Images\Films\Back to the Future\images3.jpg" />
+    <Content Include="Images\Films\Big Hero 6\1405417646_7.jpg" />
+    <Content Include="Images\Films\Big Hero 6\2d4a36329d33ff087010e209d8384e84.jpg" />
+    <Content Include="Images\Films\Big Hero 6\693126.jpg" />
+    <Content Include="Images\Films\Big Hero 6\bighero6_6.jpg" />
+    <Content Include="Images\Films\Cars 3\839646.jpg" />
+    <Content Include="Images\Films\Cars 3\cars1.jpg" />
+    <Content Include="Images\Films\Cars 3\cars2.jpg" />
+    <Content Include="Images\Films\Cars 3\cars3.jpeg" />
+    <Content Include="Images\Films\Cast Away\627.jpg" />
+    <Content Include="Images\Films\Cast Away\filmz.ru_b_137545.jpg" />
+    <Content Include="Images\Films\Cast Away\filmz.ru_b_137551.jpg" />
+    <Content Include="Images\Films\Cast Away\filmz.ru_b_137552.jpg" />
+    <Content Include="Images\Films\Catch Me If You Can\1343591892_4.jpg" />
+    <Content Include="Images\Films\Catch Me If You Can\1343591892_5.jpg" />
+    <Content Include="Images\Films\Catch Me If You Can\1343591892_6.jpg" />
+    <Content Include="Images\Films\Catch Me If You Can\324.jpg" />
+    <Content Include="Images\Films\Cidade de Deus\439.jpg" />
+    <Content Include="Images\Films\Cidade de Deus\6006_original.jpg" />
+    <Content Include="Images\Films\Cidade de Deus\6007_original.jpg" />
+    <Content Include="Images\Films\Cidade de Deus\6008_original.jpg" />
+    <Content Include="Images\Films\Coach Carter\77531.jpg" />
+    <Content Include="Images\Films\Coach Carter\8976_original.jpg" />
+    <Content Include="Images\Films\Coach Carter\8977_original.jpg" />
+    <Content Include="Images\Films\Coach Carter\8980_original.jpg" />
+    <Content Include="Images\Films\Dances with Wolves\2037.jpg" />
+    <Content Include="Images\Films\Dances with Wolves\238123_original.png" />
+    <Content Include="Images\Films\Dances with Wolves\dancer1.jpg" />
+    <Content Include="Images\Films\Dances with Wolves\dancer2.jpg" />
+    <Content Include="Images\Films\Defenders\10790.jpg" />
+    <Content Include="Images\Films\Defenders\841813.jpg" />
+    <Content Include="Images\Films\Defenders\mv10415.jpg" />
+    <Content Include="Images\Films\Defenders\rfm_0010.jpg" />
+    <Content Include="Images\Films\Django Unchained\1364474743_1.jpg" />
+    <Content Include="Images\Films\Django Unchained\1364474743_2.jpg" />
+    <Content Include="Images\Films\Django Unchained\1364474743_3.jpg" />
+    <Content Include="Images\Films\Django Unchained\586397.jpg" />
+    <Content Include="Images\Films\Eight Below\261754_original.JPG" />
+    <Content Include="Images\Films\Eight Below\4254_original.jpg" />
+    <Content Include="Images\Films\Eight Below\4255_original.jpg" />
+    <Content Include="Images\Films\Eight Below\79204.jpg" />
+    <Content Include="Images\Films\Eternal Sunshine of the Spotless Mind\5492.jpg" />
+    <Content Include="Images\Films\Eternal Sunshine of the Spotless Mind\kinopoisk.ru-Eternal-Sunshine-of-the-Spotless-Mind-1370913.jpg" />
+    <Content Include="Images\Films\Eternal Sunshine of the Spotless Mind\kinopoisk.ru-Eternal-Sunshine-of-the-Spotless-Mind-1370924.jpg" />
+    <Content Include="Images\Films\Eternal Sunshine of the Spotless Mind\kinopoisk.ru-Eternal-Sunshine-of-the-Spotless-Mind-1370930.jpg" />
+    <Content Include="Images\Films\Fantastic Beasts and Where to Find Them\021%2813%29.jpg" />
+    <Content Include="Images\Films\Fantastic Beasts and Where to Find Them\022%2825%29.jpg" />
+    <Content Include="Images\Films\Fantastic Beasts and Where to Find Them\037%286%29.jpg" />
+    <Content Include="Images\Films\Fantastic Beasts and Where to Find Them\797840.jpg" />
+    <Content Include="Images\Films\Fight Club\361.jpg" />
+    <Content Include="Images\Films\Fight Club\kinopoisk.ru-Fight-Club-1485972.jpg" />
+    <Content Include="Images\Films\Fight Club\kinopoisk.ru-Fight-Club-1485977.jpg" />
+    <Content Include="Images\Films\Fight Club\kinopoisk.ru-Fight-Club-1485978.jpg" />
+    <Content Include="Images\Films\Forrest Gump\448.jpg" />
+    <Content Include="Images\Films\Forrest Gump\gamp1.jpg" />
+    <Content Include="Images\Films\Forrest Gump\gamp2.jpg" />
+    <Content Include="Images\Films\Forrest Gump\gamp3.jpg" />
+    <Content Include="Images\Films\Freedom Writers\195226.jpg" />
+    <Content Include="Images\Films\Freedom Writers\53011_original.jpg" />
+    <Content Include="Images\Films\Freedom Writers\53014_original.jpg" />
+    <Content Include="Images\Films\Freedom Writers\53017_original.jpg" />
+    <Content Include="Images\Films\Front of the Class\232898_original.jpg" />
+    <Content Include="Images\Films\Front of the Class\232899_original.jpg" />
+    <Content Include="Images\Films\Front of the Class\232901_original.jpg" />
+    <Content Include="Images\Films\Front of the Class\428457.jpg" />
+    <Content Include="Images\Films\Gladiator\474.jpg" />
+    <Content Include="Images\Films\Gladiator\filmz.ru_f_102252.jpg" />
+    <Content Include="Images\Films\Gladiator\filmz.ru_f_102311.jpg" />
+    <Content Include="Images\Films\Gladiator\Без названия.jpg" />
+    <Content Include="Images\Films\Gone Girl\20140415-ben3.jpg" />
+    <Content Include="Images\Films\Gone Girl\20140826-ben1.jpg" />
+    <Content Include="Images\Films\Gone Girl\20140826-ben7.jpg" />
+    <Content Include="Images\Films\Gone Girl\692861.jpg" />
+    <Content Include="Images\Films\Good Will Hunting\188894_original.jpg" />
+    <Content Include="Images\Films\Good Will Hunting\188896_original.jpg" />
+    <Content Include="Images\Films\Good Will Hunting\188897_original.jpg" />
+    <Content Include="Images\Films\Good Will Hunting\539.jpg" />
+    <Content Include="Images\Films\Gran Torino\131230_original.jpg" />
+    <Content Include="Images\Films\Gran Torino\408410.jpg" />
+    <Content Include="Images\Films\Gran Torino\gran-torino %281%29.jpg" />
+    <Content Include="Images\Films\Gran Torino\gran-torino.jpg" />
+    <Content Include="Images\Films\Groundhog Day\3190-001.jpg" />
+    <Content Include="Images\Films\Groundhog Day\3190-002.jpg" />
+    <Content Include="Images\Films\Groundhog Day\527.jpg" />
+    <Content Include="Images\Films\Groundhog Day\Фильм-День-сурка.png" />
+    <Content Include="Images\Films\Hachi - A Dog%27s Tale\16370_original.jpg" />
+    <Content Include="Images\Films\Hachi - A Dog%27s Tale\387556.jpg" />
+    <Content Include="Images\Films\Hachi - A Dog%27s Tale\96102_original.jpg" />
+    <Content Include="Images\Films\Hachi - A Dog%27s Tale\96110_original.jpg" />
+    <Content Include="Images\Films\Harry Potter and the Sorcerer%27s Stone\1343727363_kinopoisk.ru-harry-potter-and-the-sorcerer_27s-stone-1273898.jpg" />
+    <Content Include="Images\Films\Harry Potter and the Sorcerer%27s Stone\1343727372_kinopoisk.ru-harry-potter-and-the-sorcerer_27s-stone-1273905.jpg" />
+    <Content Include="Images\Films\Harry Potter and the Sorcerer%27s Stone\689.jpg" />
+    <Content Include="Images\Films\Harry Potter and the Sorcerer%27s Stone\kinopoisk.ru-Harry-Potter-and-the-Sorcerer_27s-Stone-1273915.jpg" />
+    <Content Include="Images\Films\Hauru no ugoku shiro\16776_original.jpg" />
+    <Content Include="Images\Films\Hauru no ugoku shiro\23438_original.jpg" />
+    <Content Include="Images\Films\Hauru no ugoku shiro\23441_original.jpg" />
+    <Content Include="Images\Films\Hauru no ugoku shiro\49684.jpg" />
+    <Content Include="Images\Films\Home Alone\20186_original.jpg" />
+    <Content Include="Images\Films\Home Alone\20192_original.jpg" />
+    <Content Include="Images\Films\Home Alone\41509963.jpg" />
+    <Content Include="Images\Films\Home Alone\8124.jpg" />
+    <Content Include="Images\Films\How to Train Your Dragon\280172.jpg" />
+    <Content Include="Images\Films\How to Train Your Dragon\39653_original.png" />
+    <Content Include="Images\Films\How to Train Your Dragon\39654_original.png" />
+    <Content Include="Images\Films\How to Train Your Dragon\39655_original.png" />
+    <Content Include="Images\Films\Ice Age\29964_original.jpg" />
+    <Content Include="Images\Films\Ice Age\707.jpg" />
+    <Content Include="Images\Films\Ice Age\lednikovyij-period-trilogiya %281%29.jpg" />
+    <Content Include="Images\Films\Ice Age\lednikovyij-period-trilogiya.jpg" />
+    <Content Include="Images\Films\Inside I%27m Dancing\11377_original.jpg" />
+    <Content Include="Images\Films\Inside I%27m Dancing\11378_original.jpg" />
+    <Content Include="Images\Films\Inside I%27m Dancing\1277233134_4.jpg" />
+    <Content Include="Images\Films\Inside I%27m Dancing\84014.jpg" />
+    <Content Include="Images\Films\Inside Out\645118.jpg" />
+    <Content Include="Images\Films\Inside Out\Golovolomka_Movie stills_3.jpg" />
+    <Content Include="Images\Films\Inside Out\Golovolomka_Movie stills_7.jpg" />
+    <Content Include="Images\Films\Inside Out\Golovolomka_Movie stills_8.jpg" />
+    <Content Include="Images\Films\Interstellar\258687.jpg" />
+    <Content Include="Images\Films\Interstellar\2608141326088.jpg" />
+    <Content Include="Images\Films\Interstellar\u_files_store_1_272567.jpeg" />
+    <Content Include="Images\Films\Interstellar\vlcsnap-2015-04-22-08h25m27s76.jpg" />
+    <Content Include="Images\Films\Kimi no na wa\1486771409_d1c2a9b70c.jpg" />
+    <Content Include="Images\Films\Kimi no na wa\1486771409_df720b2ca1.jpg" />
+    <Content Include="Images\Films\Kimi no na wa\1486771409_e1ce7f82da.jpg" />
+    <Content Include="Images\Films\Kimi no na wa\958722.jpg" />
+    <Content Include="Images\Films\Knockin%27 on Heaven%27s Door\1445957687_1.jpg" />
+    <Content Include="Images\Films\Knockin%27 on Heaven%27s Door\32898.jpg" />
+    <Content Include="Images\Films\Knockin%27 on Heaven%27s Door\f3.jpg" />
+    <Content Include="Images\Films\Knockin%27 on Heaven%27s Door\images1.jpg" />
+    <Content Include="Images\Films\La La Land\1480714571_7c602e6a96.jpg" />
+    <Content Include="Images\Films\La La Land\1480714571_adb58d9b52.jpg" />
+    <Content Include="Images\Films\La La Land\1491081072_a6dd08eea3.jpg" />
+    <Content Include="Images\Films\La La Land\841081.jpg" />
+    <Content Include="Images\Films\La vita è bella\1397658798_be255d0765.jpg" />
+    <Content Include="Images\Films\La vita è bella\381.jpg" />
+    <Content Include="Images\Films\La vita è bella\73046803.png" />
+    <Content Include="Images\Films\La vita è bella\filmz.ru_f_113415.jpg" />
+    <Content Include="Images\Films\Legend №17\343.jpg" />
+    <Content Include="Images\Films\Legend №17\344.jpg" />
+    <Content Include="Images\Films\Legend №17\352.jpg" />
+    <Content Include="Images\Films\Legend №17\601564.jpg" />
+    <Content Include="Images\Films\Leon\389.jpg" />
+    <Content Include="Images\Films\Leon\filmz.ru_f_100345.jpg" />
+    <Content Include="Images\Films\Leon\leon-04.jpg" />
+    <Content Include="Images\Films\Leon\leon-06.jpg" />
+    <Content Include="Images\Films\Les Choristes\1438442533_12923.png" />
+    <Content Include="Images\Films\Les Choristes\17475_original.jpg" />
+    <Content Include="Images\Films\Les Choristes\17477_original.jpg" />
+    <Content Include="Images\Films\Les Choristes\51481.jpg" />
+    <Content Include="Images\Films\Limitless\462606.jpg" />
+    <Content Include="Images\Films\Limitless\filmz.ru_b_65461.jpg" />
+    <Content Include="Images\Films\Limitless\filmz.ru_b_70279.jpg" />
+    <Content Include="Images\Films\Limitless\filmz.ru_b_70287.jpg" />
+    <Content Include="Images\Films\Mad Max - Fury Road\453406.jpg" />
+    <Content Include="Images\Films\Mad Max - Fury Road\596384.jpg" />
+    <Content Include="Images\Films\Mad Max - Fury Road\596385.jpg" />
+    <Content Include="Images\Films\Mad Max - Fury Road\596386.jpg" />
+    <Content Include="Images\Films\Men of Honor\17767_original.jpg" />
+    <Content Include="Images\Films\Men of Honor\17768_original.jpg" />
+    <Content Include="Images\Films\Men of Honor\751.jpg" />
+    <Content Include="Images\Films\Men of Honor\Без названия.png" />
+    <Content Include="Images\Films\Million Dollar Baby\81297.jpg" />
+    <Content Include="Images\Films\Million Dollar Baby\filmz.ru_b_113362.jpg" />
+    <Content Include="Images\Films\Million Dollar Baby\filmz.ru_b_113378.jpg" />
+    <Content Include="Images\Films\Million Dollar Baby\filmz.ru_b_113390.jpg" />
+    <Content Include="Images\Films\Monsters, Inc\458.jpg" />
+    <Content Include="Images\Films\Monsters, Inc\CINEMA_PERM_RU_KADRY_KORPORACIYA_MONSTROV_23597.jpg" />
+    <Content Include="Images\Films\Monsters, Inc\CINEMA_PERM_RU_KADRY_KORPORACIYA_MONSTROV_23602.jpg" />
+    <Content Include="Images\Films\Monsters, Inc\CINEMA_PERM_RU_KADRY_KORPORACIYA_MONSTROV_23604.jpg" />
+    <Content Include="Images\Films\My Name Is Khan\406340.jpg" />
+    <Content Include="Images\Films\My Name Is Khan\61171_original.png" />
+    <Content Include="Images\Films\My Name Is Khan\menya-zovut-khan %281%29.jpg" />
+    <Content Include="Images\Films\My Name Is Khan\menya-zovut-khan.jpg" />
+    <Content Include="Images\Films\The Dark Tower\2829002.jpg" />
+    <Content Include="Images\Films\The Dark Tower\641780.jpg" />
+    <Content Include="Images\Films\The Dark Tower\MV5BODk1ODNiNmMtNWE4Yy00Y2I2LTlkZTYtOTBiMjEyMDNkOTM3L2ltYWdlXkEyXkFqcGdeQXVyNDYxMzk4MDA-._V1_1.jpg" />
+    <Content Include="Images\Films\The Dark Tower\NEDThrkcG1lyGI_1_a.jpg" />
+    <Content Include="Images\iphone360_690593.jpg" />
+    <Content Include="Images\jamesmangold.jpg" />
+    <Content Include="Images\Luchshie-yekranizacii-Stivena-Kinga-Zelenaya-milya1.jpg" />
+    <Content Include="Images\MV5BODk1ODNiNmMtNWE4Yy00Y2I2LTlkZTYtOTBiMjEyMDNkOTM3L2ltYWdlXkEyXkFqcGdeQXVyNDYxMzk4MDA-._V1_1.jpg" />
+    <Content Include="Images\NEDThrkcG1lyGI_1_a.jpg" />
+    <Content Include="Images\News\119510.jpg" />
+    <Content Include="Images\News\146129587.jpg" />
+    <Content Include="Images\News\1497355358-6113.jpg" />
+    <Content Include="Images\News\5091.jpg" />
+    <Content Include="Images\News\5bc983c921cbef302d5e6b37538e74c2.jpg" />
+    <Content Include="Images\News\669880.jpg" />
+    <Content Include="Images\News\main_2975919_1497859063.jpg" />
+    <Content Include="Images\News\main_2976016_1497864633.jpg" />
+    <Content Include="Images\News\mid_2789378_03_201607231034098481.jpg" />
+    <Content Include="Images\News\mid_2975919_02_201706191057429014.jpg" />
+    <Content Include="Images\News\Ocean%27s Eleven\770.jpg" />
+    <Content Include="Images\News\Ocean%27s Eleven\808_original.jpg" />
+    <Content Include="Images\News\Ocean%27s Eleven\809_original.jpg" />
+    <Content Include="Images\News\Ocean%27s Eleven\810_original.jpg" />
+    <Content Include="Images\News\Pay It Forward\4575_original.jpg" />
+    <Content Include="Images\News\Pay It Forward\782.jpg" />
+    <Content Include="Images\News\Pay It Forward\zaplati-drugomu.jpg" />
+    <Content Include="Images\News\Pay It Forward\zaplati-drugomu2.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - Dead Man%27s Chest\1363342744_kinopoisk.ru-pirates-of-the-caribbean_3a-dead-man_27s-chest-408739.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - Dead Man%27s Chest\63991.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - Dead Man%27s Chest\kinopoisk.ru-Pirates-of-the-Caribbean_3A-Dead-Man_27s-Chest-420886.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - Dead Man%27s Chest\piratesofthecaribbean2_67.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - The Curse of the Black Pearl\1459600846_3.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - The Curse of the Black Pearl\2217-002.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - The Curse of the Black Pearl\4374.jpg" />
+    <Content Include="Images\News\Pirates of the Caribbean - The Curse of the Black Pearl\797-004.jpg" />
+    <Content Include="Images\News\Pulp Fiction\3321-001.jpg" />
+    <Content Include="Images\News\Pulp Fiction\3321-002.jpg" />
+    <Content Include="Images\News\Pulp Fiction\342.jpg" />
+    <Content Include="Images\News\Pulp Fiction\images.jpg" />
+    <Content Include="Images\News\Ray\1381037509_vlcsnap-00016.jpg" />
+    <Content Include="Images\News\Ray\1381037547_vlcsnap-00017.jpg" />
+    <Content Include="Images\News\Ray\5001_original.jpg" />
+    <Content Include="Images\News\Ray\5319.jpg" />
+    <Content Include="Images\News\Room\643995.jpg" />
+    <Content Include="Images\News\Room\643996.jpg" />
+    <Content Include="Images\News\Room\644002.jpg" />
+    <Content Include="Images\News\Room\798068.jpg" />
+    <Content Include="Images\News\Rush\25951-1522496655255b85574d60.jpg" />
+    <Content Include="Images\News\Rush\25951-7986786925255b85364102.jpg" />
+    <Content Include="Images\News\Rush\596125.jpg" />
+    <Content Include="Images\News\Rush\Gonka-46304.jpg" />
+    <Content Include="Images\News\Sen to Chihiro no kamikakushi\1383835569_kinopoisk.ru-sen-to-chihiro-no-kamikakushi-1021436.jpg" />
+    <Content Include="Images\News\Sen to Chihiro no kamikakushi\370.jpg" />
+    <Content Include="Images\News\Sen to Chihiro no kamikakushi\filmz.ru_f_136577.jpg" />
+    <Content Include="Images\News\Sen to Chihiro no kamikakushi\prizr1.jpg" />
+    <Content Include="Images\News\Seven Pounds\395787.jpg" />
+    <Content Include="Images\News\Seven Pounds\5-002.jpg" />
+    <Content Include="Images\News\Seven Pounds\5-004.jpg" />
+    <Content Include="Images\News\Seven Pounds\9745_original.jpg" />
+    <Content Include="Images\News\Sherlock Holmes\420923.jpg" />
+    <Content Include="Images\News\Sherlock Holmes\filmz.ru_b_22304.jpg" />
+    <Content Include="Images\News\Sherlock Holmes\filmz.ru_b_22702.jpg" />
+    <Content Include="Images\News\Sherlock Holmes\filmz.ru_b_22703.jpg" />
+    <Content Include="Images\News\Shutter Island\20424_original.jpg" />
+    <Content Include="Images\News\Shutter Island\23958_original.jpg" />
+    <Content Include="Images\News\Shutter Island\23961_original.jpg" />
+    <Content Include="Images\News\Shutter Island\397667.jpg" />
+    <Content Include="Images\News\Snatch\526.jpg" />
+    <Content Include="Images\News\Snatch\kinopoisk.ru-Snatch-1918082.jpg" />
+    <Content Include="Images\News\Snatch\kinopoisk.ru-Snatch-2609908.jpg" />
+    <Content Include="Images\News\Snatch\kinopoisk.ru-Snatch-2609913.jpg" />
+    <Content Include="Images\News\Song of the Sea\3375329-777636.jpg" />
+    <Content Include="Images\News\Song of the Sea\714248.jpg" />
+    <Content Include="Images\News\Song of the Sea\e6ec7d843cbb55a45c39326e08f48cea.jpg" />
+    <Content Include="Images\News\Song of the Sea\Magazinema-La-cancion-del-mar-41.jpg" />
+    <Content Include="Images\News\Star Wars Episode 3 - Revenge of the Sith\5619.jpg" />
+    <Content Include="Images\News\Star Wars Episode 3 - Revenge of the Sith\74114_original.JPG" />
+    <Content Include="Images\News\Star Wars Episode 3 - Revenge of the Sith\74115_original.JPG" />
+    <Content Include="Images\News\Star Wars Episode 3 - Revenge of the Sith\74728_original.JPG" />
+    <Content Include="Images\News\Sully\1473994716_62.jpg" />
+    <Content Include="Images\News\Sully\805650.jpg" />
+    <Content Include="Images\News\Sully\CHudo-na-gudzone-5.jpg" />
+    <Content Include="Images\News\Sully\maxresdefault.jpg" />
+    <Content Include="Images\News\Taare Zameen Par\280562.jpg" />
+    <Content Include="Images\News\Taare Zameen Par\8631-001.jpg" />
+    <Content Include="Images\News\Taare Zameen Par\8631-003.jpg" />
+    <Content Include="Images\News\Taare Zameen Par\D733_01.jpg" />
+    <Content Include="Images\News\Temple Grandin\14271-001.jpg" />
+    <Content Include="Images\News\Temple Grandin\14271-002.jpg" />
+    <Content Include="Images\News\Temple Grandin\14271-004.jpg" />
+    <Content Include="Images\News\Temple Grandin\424153.jpg" />
+    <Content Include="Images\News\Terminator 2 - Judgment Day\31526-001.jpg" />
+    <Content Include="Images\News\Terminator 2 - Judgment Day\31526-002.jpg" />
+    <Content Include="Images\News\Terminator 2 - Judgment Day\444.jpg" />
+    <Content Include="Images\News\Terminator 2 - Judgment Day\shotimg2087_8.jpg" />
+    <Content Include="Images\News\The Artist\539550.jpg" />
+    <Content Include="Images\News\The Artist\artist1.jpg" />
+    <Content Include="Images\News\The Artist\filmz.ru_b_75801.jpg" />
+    <Content Include="Images\News\The Artist\okino.ua-the-artist-151089-a.jpg" />
+    <Content Include="Images\News\The Avengers\263531.jpg" />
+    <Content Include="Images\News\The Avengers\kinopoisk.ru-The-Avengers-1879201.jpg" />
+    <Content Include="Images\News\The Avengers\kinopoisk.ru-The-Avengers-1879202.jpg" />
+    <Content Include="Images\News\The Avengers\kinopoisk.ru-The-Avengers-1880039.jpg" />
+    <Content Include="Images\News\The Blind Side\450213.jpg" />
+    <Content Include="Images\News\The Blind Side\Blind-Side-1.jpg" />
+    <Content Include="Images\News\The Blind Side\Blind-Side-2.jpg" />
+    <Content Include="Images\News\The Blind Side\Blind-Side-3.jpg" />
+    <Content Include="Images\News\The Boy in the Striped Pyjamas\281251.jpg" />
+    <Content Include="Images\News\The Boy in the Striped Pyjamas\89008_original.jpg" />
+    <Content Include="Images\News\The Boy in the Striped Pyjamas\89009_original.jpg" />
+    <Content Include="Images\News\The Boy in the Striped Pyjamas\89011_original.jpg" />
+    <Content Include="Images\News\The Bucket List\1482154703_poka-ne-sygral-v-yaschik.jpg" />
+    <Content Include="Images\News\The Bucket List\215983_original.jpg" />
+    <Content Include="Images\News\The Bucket List\258885.jpg" />
+    <Content Include="Images\News\The Bucket List\5.jpg" />
+    <Content Include="Images\News\The Curious Case of Benjamin Button\116816_original.jpg" />
+    <Content Include="Images\News\The Curious Case of Benjamin Button\116817_original.jpg" />
+    <Content Include="Images\News\The Curious Case of Benjamin Button\116820_original.jpg" />
+    <Content Include="Images\News\The Curious Case of Benjamin Button\81555.jpg" />
+    <Content Include="Images\News\The Dark Knight Rises\1326375435_3.jpg" />
+    <Content Include="Images\News\The Dark Knight Rises\1326375457_4.jpg" />
+    <Content Include="Images\News\The Dark Knight Rises\1326375527_2.jpg" />
+    <Content Include="Images\News\The Dark Knight Rises\437410.jpg" />
+    <Content Include="Images\News\The Dark Knight\111543.jpg" />
+    <Content Include="Images\News\The Dark Knight\bat1.jpeg" />
+    <Content Include="Images\News\The Dark Knight\bat2.jpeg" />
+    <Content Include="Images\News\The Dark Knight\bat3.jpeg" />
+    <Content Include="Images\News\The Departed\81314.jpg" />
+    <Content Include="Images\News\The Departed\filmz.ru_f_4619.jpg" />
+    <Content Include="Images\News\The Departed\filmz.ru_f_4634.jpg" />
+    <Content Include="Images\News\The Departed\filmz.ru_f_4636.jpg" />
+    <Content Include="Images\News\The Devil%27s Advocate\27732_original.jpg" />
+    <Content Include="Images\News\The Devil%27s Advocate\27734_original.jpg" />
+    <Content Include="Images\News\The Devil%27s Advocate\27736_original.jpg" />
+    <Content Include="Images\News\The Devil%27s Advocate\3797.jpg" />
+    <Content Include="Images\News\The Fifth Element\1423411751_2.jpg" />
+    <Content Include="Images\News\The Fifth Element\1431267061_skrinshot_00002.jpg" />
+    <Content Include="Images\News\The Fifth Element\2656.jpg" />
+    <Content Include="Images\News\The Fifth Element\the_fifth_element-05.jpg" />
+    <Content Include="Images\News\The Godfather\1330.jpg" />
+    <Content Include="Images\News\The Godfather\325.jpg" />
+    <Content Include="Images\News\The Godfather\filmz.ru_b_60569.jpg" />
+    <Content Include="Images\News\The Godfather\the-godfather-2-1279.jpg" />
+    <Content Include="Images\News\The Great Gatsby\20130312-velikk.jpg" />
+    <Content Include="Images\News\The Great Gatsby\20130312-velikk50.jpg" />
+    <Content Include="Images\News\The Great Gatsby\463724.jpg" />
+    <Content Include="Images\News\The Great Gatsby\blog_entry_433714.jpg" />
+    <Content Include="Images\News\The Hateful Eight\819101.jpg" />
+    <Content Include="Images\News\The Hateful Eight\The-Hateful-Eight_2015-18.jpg" />
+    <Content Include="Images\News\The Hateful Eight\The-Hateful-Eight_2015-23.jpg" />
+    <Content Include="Images\News\The Hateful Eight\The-Hateful-Eight_2015-3.jpg" />
+    <Content Include="Images\News\The Help\470553.jpg" />
+    <Content Include="Images\News\The Help\filmz.ru_b_78952.jpg" />
+    <Content Include="Images\News\The Help\filmz.ru_b_92394.jpg" />
+    <Content Include="Images\News\The Help\filmz.ru_b_92422.jpg" />
+    <Content Include="Images\News\The Hobbit - An Unexpected Journey\1350818697_kinopoisk.ru-the-hobbit_3a-an-unexpected-journey-1979711.jpg" />
+    <Content Include="Images\News\The Hobbit - An Unexpected Journey\1350818781_kinopoisk.ru-the-hobbit_3a-an-unexpected-journey-1879122.jpg" />
+    <Content Include="Images\News\The Hobbit - An Unexpected Journey\278522.jpg" />
+    <Content Include="Images\News\The Hobbit - An Unexpected Journey\kinopoisk.ru-The-Hobbit_3A-An-Unexpected-Journey-2011118.jpg" />
+    <Content Include="Images\News\The Hobbit - The Desolation of Smaug\408876.jpg" />
+    <Content Include="Images\News\The Hobbit - The Desolation of Smaug\kinopoisk.ru-The-Hobbit_3A-The-Desolation-of-Smaug-2021317.jpg" />
+    <Content Include="Images\News\The Hobbit - The Desolation of Smaug\kinopoisk.ru-The-Hobbit_3A-The-Desolation-of-Smaug-2044368.jpg" />
+    <Content Include="Images\News\The Hobbit - The Desolation of Smaug\kinopoisk.ru-The-Hobbit_3A-The-Desolation-of-Smaug-2044369.jpg" />
+    <Content Include="Images\News\The Illusionist\102198.jpg" />
+    <Content Include="Images\News\The Illusionist\675-001.jpg" />
+    <Content Include="Images\News\The Illusionist\69105_original.bmp" />
+    <Content Include="Images\News\The Illusionist\69107_original.bmp" />
+    <Content Include="Images\News\The Judge\588672.jpg" />
+    <Content Include="Images\News\The Judge\The_Judge_14121067164496.jpg" />
+    <Content Include="Images\News\The Judge\The_Judge_14121067167042.jpg" />
+    <Content Include="Images\News\The Judge\The_Judge_14121068198764.jpg" />
+    <Content Include="Images\News\The King%27s Speech\485311.jpg" />
+    <Content Include="Images\News\The King%27s Speech\korol-govorit-1.jpg" />
+    <Content Include="Images\News\The King%27s Speech\korol-govorit-2.jpg" />
+    <Content Include="Images\News\The King%27s Speech\korol-govorit-3.jpg" />
+    <Content Include="Images\News\The Life of David Gale\f0.jpg" />
+    <Content Include="Images\News\The Life of David Gale\f2.jpg" />
+    <Content Include="Images\News\The Life of David Gale\lifeofdavidgale_51502.jpg" />
+    <Content Include="Images\News\The Life of David Gale\zhizn-devida-gejla.jpeg" />
+    <Content Include="Images\News\The Lion King\1.jpg" />
+    <Content Include="Images\News\The Lion King\2360.jpg" />
+    <Content Include="Images\News\The Lion King\The-Lion-King-06.jpg" />
+    <Content Include="Images\News\The Lion King\The-Lion-King-07.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Fellowship of the Ring\328.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Fellowship of the Ring\vlast1.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Fellowship of the Ring\vlast2.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Fellowship of the Ring\vlast3.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Return of the King\1335534411_kinopoisk.ru-the-lord-of-the-rings_3a-the-return-of-the-king-534118.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Return of the King\1335534440_kinopoisk.ru-the-lord-of-the-rings_3a-the-return-of-the-king-1531001.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Return of the King\3498.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Return of the King\koletz1.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Two Towers\1369140664_vk2-1.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Two Towers\1369140701_vk2-2.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Two Towers\1369140705_vk2-3.jpg" />
+    <Content Include="Images\News\The Lord of the Rings - The Two Towers\312.jpg" />
+    <Content Include="Images\News\The Matrix\301.jpg" />
+    <Content Include="Images\News\The Matrix\matritsa-trilogiya-scene-1.png" />
+    <Content Include="Images\News\The Matrix\matrix1.jpg" />
+    <Content Include="Images\News\The Matrix\matrix2.jpg" />
+    <Content Include="Images\News\The Notebook\3561.jpg" />
+    <Content Include="Images\News\The Notebook\filmz.ru_b_109519.jpg" />
+    <Content Include="Images\News\The Notebook\filmz.ru_b_109532.jpg" />
+    <Content Include="Images\News\The Notebook\filmz.ru_b_109534.jpg" />
+    <Content Include="Images\News\The Pianist\355.jpg" />
+    <Content Include="Images\News\The Pianist\filmz.ru_b_47384.jpg" />
+    <Content Include="Images\News\The Pianist\filmz.ru_b_47390.jpg" />
+    <Content Include="Images\News\The Pianist\filmz.ru_b_47399.jpg" />
+    <Content Include="Images\News\The Prestige\195334.jpg" />
+    <Content Include="Images\News\The Prestige\filmz.ru_f_7728.jpg" />
+    <Content Include="Images\News\The Prestige\filmz.ru_f_7729.jpg" />
+    <Content Include="Images\News\The Prestige\filmz.ru_f_7746.jpg" />
+    <Content Include="Images\News\The Pursuit of Happyness\104938.jpg" />
+    <Content Include="Images\News\The Pursuit of Happyness\1273-003.jpg" />
+    <Content Include="Images\News\The Pursuit of Happyness\1438777758_567958688_screenshot.png" />
+    <Content Include="Images\News\The Pursuit of Happyness\262704_original.JPG" />
+    <Content Include="Images\News\The Revenant\1709151729071.jpg" />
+    <Content Include="Images\News\The Revenant\1709151729073.jpg" />
+    <Content Include="Images\News\The Revenant\522941.jpg" />
+    <Content Include="Images\News\The Revenant\maxresdefault %281%29.jpg" />
+    <Content Include="Images\News\The Sixth Sense\15669_original.jpg" />
+    <Content Include="Images\News\The Sixth Sense\15670_original.jpg" />
+    <Content Include="Images\News\The Sixth Sense\395.jpg" />
+    <Content Include="Images\News\The Sixth Sense\shestoe.chuvstvo.jpg" />
+    <Content Include="Images\News\The Terminal\1557_original.jpg" />
+    <Content Include="Images\News\The Terminal\1560_original.jpg" />
+    <Content Include="Images\News\The Terminal\6877.jpg" />
+    <Content Include="Images\News\The Terminal\images.jpg" />
+    <Content Include="Images\News\The Truman Show\1620840-856077.jpg" />
+    <Content Include="Images\News\The Truman Show\1620840-856081.jpg" />
+    <Content Include="Images\News\The Truman Show\4541.jpg" />
+    <Content Include="Images\News\The Truman Show\The-Truman-Show-03.jpg" />
+    <Content Include="Images\News\The World%27s Fastest Indian\1360238400_kinopoisk.ru-the-world_27s-fastest-indian-1965719.jpg" />
+    <Content Include="Images\News\The World%27s Fastest Indian\1463539726_513a523e10.jpg" />
+    <Content Include="Images\News\The World%27s Fastest Indian\1463539736_322a59feb0.jpg" />
+    <Content Include="Images\News\The World%27s Fastest Indian\81512.jpg" />
+    <Content Include="Images\News\WALL-E\233051_original.jpg" />
+    <Content Include="Images\News\WALL-E\233053_original.jpg" />
+    <Content Include="Images\News\WALL-E\279102.jpg" />
+    <Content Include="Images\News\WALL-E\screenshot_571_5.jpg" />
+    <Content Include="Images\News\Warrior\1323266338_voin-4.jpg" />
+    <Content Include="Images\News\Warrior\1339753387_1.jpg" />
+    <Content Include="Images\News\Warrior\1339753387_2.jpg" />
+    <Content Include="Images\News\Warrior\442568.jpg" />
+    <Content Include="Images\News\Whiplash\725190.jpg" />
+    <Content Include="Images\News\Whiplash\Whiplash-06.jpg" />
+    <Content Include="Images\News\Whiplash\wiplash1.jpg" />
+    <Content Include="Images\News\Whiplash\wiplash2.jpg" />
+    <Content Include="Images\News\Yip Man\115815_original.jpg" />
+    <Content Include="Images\News\Yip Man\115818_original.jpg" />
+    <Content Include="Images\News\Yip Man\409507.jpg" />
+    <Content Include="Images\News\Yip Man\ipman1.jpg" />
+    <Content Include="Images\News\Zootopia\775276.jpg" />
+    <Content Include="Images\News\Zootopia\filmz.ru_b_222938.jpg" />
+    <Content Include="Images\News\Zootopia\filmz.ru_b_222947.jpg" />
+    <Content Include="Images\News\Zootopia\filmz.ru_b_222948.jpg" />
+    <Content Include="Images\pirates-carribean-5.jpg" />
+    <Content Include="Images\search.png" />
+    <Content Include="Images\search_mini.png" />
+    <Content Include="Images\SpisokShindlera.jpg" />
+    <Content Include="Images\stars.png" />
+    <Content Include="Images\The-Green-Mile.jpg" />
+    <Content Include="Images\www.GetBg.net_2017Movies_The_actress_Gal_Gadot_in_the_movie_Miracle_Woman_2017_112019_.jpg" />
+    <Content Include="Images\иван1.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Images\Films\Cars 3\Thumbs.db" />
+    <Content Include="Images\Films\Eternal Sunshine of the Spotless Mind\Thumbs.db" />
+    <Content Include="Images\News\Thumbs.db" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.orbit.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\SuccessRegister.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\FilmForm.cshtml" />
+    <Content Include="Views\Admin\NewForm.cshtml" />
+    <Content Include="Views\Film\Film.cshtml" />
+    <Content Include="Views\Genres\Genres.cshtml" />
+    <Content Include="Views\Novelties\Novelties.cshtml" />
+    <Content Include="Views\Top100\Top100.cshtml" />
+    <Content Include="Views\MyPage\MyFilms.cshtml" />
+    <Content Include="Views\MyPage\MyPage.cshtml" />
+    <Content Include="Views\Admin\FilmTable.cshtml" />
+    <Content Include="Views\Admin\ChangeFilm.cshtml" />
+    <Content Include="Views\Admin\NewsTable.cshtml" />
+    <Content Include="Views\Admin\ChangeNew.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\MyFilms\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Filmozor.BLL\Filmozor.BLL.csproj">
+      <Project>{e7d185da-e5db-4e1b-8958-930429f6d310}</Project>
+      <Name>Filmozor.BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52293</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52293/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
